@@ -64,36 +64,21 @@ function addEmployee(){
             name: "addEmployee"
             }
         ],name).then((data)=>{
+            console.log(data.position)
             let addMember;
             let name = data.name;
             let id = data.id;
             let email = data.email;
             let officeNumber = data.positionInfo;
-            if(position === "Engineer"){
+            if(data.position === "Engineer"){
                 addMember = new Engineer(name, id, email, positionInfo);
-            }else if(position === "Intern"){
+            }else if(data.position === "Intern"){
                 addMember = new Intern(name, id, email, positionInfo);
             }
             else{
                 addMember = new Manager(name, id, email, officeNumber)
             }
             team.push(addMember);
-
-            // fs.writeFileSync(__dirname + "/db.json", JSON.stringify(db))
-
-
-            // fs.writeFile(outputPath, render(team), function(err) {
-            //     if (err) {
-            //         console.log(err);
-            //     }
-            // });
-            // if(data.addMore ==='Yes') {
-            //     addMember();
-            // }
-            // else {
-            //     render(team);
-            //     // process.exit(1);
-            //     };
 
 
 
